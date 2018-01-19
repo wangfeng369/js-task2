@@ -1,0 +1,165 @@
+$head-color: #5fc0cd;
+@mixin display{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@mixin head-button{
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	border: none;
+	background-color: transparent;
+	background-position: center;
+}
+@mixin contentbox{
+	display: flex;
+	padding: 10%;
+	background-color: #fff1d3;
+	border: 0.2rem solid white;
+	margin-top: 10rem;
+}
+body{
+	background-color:#fff;
+}
+.header{
+	background-color:$head-color;
+	width: 100%;
+	min-width: 320px;
+	max-width: 640px;
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	justify-content:flex-start;
+	height: 5rem;
+	border-bottom: 0.1rem solid white;
+	.button-left,{
+		@include display;
+		flex: 1;
+		height: 100%;
+		button{
+		@include head-button;
+		zoom:0.6;
+		}
+	}
+	.button-right{
+		@include display;
+		flex: 1;
+		height: 100%;
+		button{
+		@include head-button;
+		background-image: url(./images/close.png);
+		zoom:0.5;
+		}
+	}
+	.header-center{
+		flex: 8;
+		 p{
+		 	color: white;
+		 	font-weight: bold;
+		 	font-size: 2rem;
+		 }
+	}
+}
+.wraper{
+	background-color: $head-color;
+	margin-top: 5rem;
+	flex-direction: column;
+	min-height: calc(100vh - 77px);
+	justify-content: flex-start;
+	align-items: flex-start;
+.nav{
+	flex-direction: column;
+	width: 100%;
+	.nav-top{
+		background-color: #b9e9f5;
+		width: 90%;
+		justify-content: flex-start;
+		font-size: 1.5rem;
+		padding: 1rem 5%;
+	}
+	.nav-center{
+		width: 100%;
+		justify-content: flex-start;
+		.nav-triangle{
+			width: 0;
+			height: 0;
+			border-left: 0.5rem solid transparent;
+			border-right: 0.5rem solid transparent;
+			border-top: 1rem solid #b9e9f5;
+			margin-left: 5rem;
+		}
+	}
+	.nav-bottom{
+		justify-content: flex-start;
+		color: white;
+		width: 100%;
+		font-size: 1rem;
+		padding-left: 10rem;
+	}
+}
+}
+
+.content{
+	background-color: $head-color;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+		.box{
+			flex-direction: column;
+			margin:2% 5%;
+			height: 8rem;
+			position: relative;
+			.boxtop{
+				flex:8;
+				background-color: #fff1d3;		
+				font-weight: bold;
+				font-size: 1.5rem;
+				width: 8rem;
+
+			}
+			.boxbottom{
+				flex: 2;
+				background-color: #39a1c2;
+				font-size: 0.8rem;
+				color: white;
+				width: 8rem;
+		}
+			.boxhover{
+				background-color: $head-color;
+				justify-content: space-around;
+				margin-top: 0.2rem;
+				position: absolute;
+   				bottom: 0;
+   				transform: translate(0%,100%);
+   				display: none;
+   					img{
+   						zoom:0.6;
+   						margin:0.2rem;
+   						background-position: center;
+   					}
+			}
+			&:hover .boxhover{display: inline-flex};
+}
+}
+.footer{
+	@include display;
+	position: fixed;
+	bottom: 0;
+	max-width: 640px;
+	min-width: 320px;
+	width: 100%;
+	padding: 1rem 0;
+	background-color: $head-color;
+	button{
+		border: none;
+		width: 100%;
+		height: 100%;
+		background-color: orange;
+		color: white;
+		font-weight: bold;
+		font-size: 2rem;
+		margin: 0 2rem;
+
+	}
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>游戏选择</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/task2-5.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="header">
+	<div class="button-left">
+		<button></button>
+	</div>
+	<div class="header-center">
+		<p>法官日记</p>
+	</div>
+	<div class="button-right">
+		<button></button>
+	</div>
+</div>
+<div class="content">
+</div>
+<div class="footer">
+	<button id="next">开始游戏</button>
+</div>
+<script type="text/javascript">
+	var a=sessionStorage.getItem("number1");
+	var b=sessionStorage.getItem("number2");
+	var c=sessionStorage.getItem("number3");
+ 	var brr=JSON.parse(sessionStorage.getItem("list"));
+ 	var deadArr=[];
+ 	sessionStorage.setItem("deadlist",JSON.stringify(deadArr));
+ 	console.log(a,b,c);
+ 	console.log(brr);
+
+ 	$(document).ready(function(){
+ 		for(var i=0;i<a;i++){
+ 		$(".content").append("<div><div>");
+ 		$(".content").children("div").addClass("box");
+ 		
+ 	}
+ 		$(".box").append("<div>");
+ 		$(".box").children("div:first-child").addClass("boxtop");
+ 		$(".box").children("div:last-child").addClass("boxbottom");
+ 	});
+ 	$
+ 	$(document).ready(function(){
+ 		var x = $(".boxtop");
+ 		var y = $(".boxbottom");
+ 		console.log(x);
+ 		for(var i=0;i<a;i++){
+ 			$(x[i]).append(brr[i]);
+ 			$(y[i]).append(i+1+"号");
+ 		};
+ 	});
+ 	$(document).ready(function(){
+ 		$("#next").click(function(){
+ 		$(location).attr("href","task2-6.html")	;
+ 		});
+ 	});
+
+
+
+
+
+</script>
+</body>
+</html>

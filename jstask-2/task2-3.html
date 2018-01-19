@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>游戏选择</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/task2-3.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+</head>
+<body>
+<div class="header">
+	<img src="images/back.png">
+</div>
+<div class="bodywraper ">
+	<div class="content-top container">
+		<button>玩家配比</button>
+	</div>
+	<div class="content-center container">
+		<div class="content-centerleft">
+			<img src="images/killer.png">杀手
+			<span id="killer"></span>人
+		</div>
+		<div class="content-centerright">
+			<img src="images/water.png">平民
+			<span id="water"></span>人
+		</div>
+	</div>
+	<div class="content-bottom container">
+		<span class="content-bottomleft">请输入玩家数量</span>
+		<span class="content-bottomcenter">
+		<input type="text" id="number" oninput="getNumberFunction()" onkeyup="this.value=this.value.replace(/\D/g,'')" ></span>
+		<span class="content-bottomright">玩家数量为4-18</span>
+	</div>
+	<div class="footer container">
+		<button onclick="getTestFunction()">去发牌</button>
+	</div>
+	</div>
+	<script type="text/javascript">
+		function getNumberFunction(){
+			var x=document.getElementById("number").value;
+			var a=parseInt(x);
+			var k=Math.floor(a/3);
+			var b=parseInt(k)
+			var w=a-b;
+			var c=parseInt(w);
+			var arr=new Array(a,b,c);
+		if (a<4||a>18) {
+			document.getElementById("killer").innerHTML="";
+			document.getElementById("water").innerHTML="";	
+		}
+		else{
+			if(isNaN(b)){
+				return;
+			}
+			else{
+				document.getElementById("killer").innerHTML=b;
+				document.getElementById("water").innerHTML=c;
+			}			
+		}
+		return arr;
+}
+		function getTestFunction(){
+			var x=getNumberFunction();
+			var a=x[0];
+			var b=x[1];
+			var c=x[2];	
+			if (x[0]>=4&&x[0]<=18) {
+				window.location.href="task2-4.html";
+				sessionStorage.setItem("number1",a);
+				sessionStorage.setItem("number2",b);
+				sessionStorage.setItem("number3",c);
+			}
+			else{
+				alert("请输入正确的数字");
+				return;
+			}
+
+		}
+	</script>
+
+
+</body>
+</html>

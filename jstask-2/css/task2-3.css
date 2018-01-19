@@ -1,0 +1,93 @@
+body {
+  background-color: #eff0f4; }
+
+.header {
+  background-color: #5fc0cd;
+  width: 100%;
+  min-width: 320px;
+  max-width: 640px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+  height: 5rem; }
+  .header img {
+    zoom: 0.5;
+    transform: translate(50%); }
+
+.bodywraper {
+  flex-direction: column;
+  margin-top: 5rem;
+  display: flex; }
+
+.content-top {
+  background-color: white;
+  display: flex;
+  align-items: center; }
+  .content-top button {
+    font-weight: blod;
+    font-size: 2.5rem;
+    box-shadow: 1px 1px 1px 1px #5fc0cd;
+    background-color: transparent;
+    width: 100%;
+    height: 100%; }
+
+.content-center {
+  background-color: white;
+  margin-bottom: 1rem;
+  display: flex;
+  border-bottom: 0.1rem solid #5fc0cd;
+  padding-bottom: 40%; }
+  .content-center .content-centerleft, .content-center .content-centerright {
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: 50%; }
+    .content-center .content-centerleft img, .content-center .content-centerright img {
+      zoom: 0.1; }
+    .content-center .content-centerleft span, .content-center .content-centerright span {
+      width: 1.5rem;
+      justify-content: center;
+      align-items: center; }
+
+.content-bottom {
+  background-color: white;
+  display: flex;
+  padding: 20% 0;
+  justify-content: flex-start; }
+  .content-bottom .content-bottomleft {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 1rem; }
+  .content-bottom .content-bottomcenter input {
+    margin: 0 1rem;
+    color: orange;
+    width: 2rem;
+    border: none;
+    background-color: gray;
+    border-radius: 10%;
+    font-size: 1rem;
+    outline: none;
+    text-align: center; }
+  .content-bottom .content-bottomright {
+    color: orange;
+    font-size: 1rem; }
+
+.footer {
+  margin: 0 1rem;
+  background-color: #5fc0cd;
+  margin-top: 5rem; }
+  .footer button {
+    color: white;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    font-size: 2.5rem; }
+
+.container {
+  width: 90%; }
+
+/*# sourceMappingURL=task2-3.css.map */

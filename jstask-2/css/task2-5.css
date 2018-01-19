@@ -1,0 +1,96 @@
+body {
+  background-color: #5fc0cd; }
+
+.header {
+  background-color: #5fc0cd;
+  width: 100%;
+  min-width: 320px;
+  max-width: 640px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+  height: 5rem;
+  border-bottom: 0.1rem solid white; }
+  .header .button-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100%; }
+    .header .button-left button {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      border: none;
+      background-color: transparent;
+      background-position: center;
+      background-image: url(./images/back.png);
+      zoom: 0.6; }
+  .header .button-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100%; }
+    .header .button-right button {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      border: none;
+      background-color: transparent;
+      background-position: center;
+      background-image: url(./images/close.png);
+      zoom: 0.5; }
+  .header .header-center {
+    display: flex;
+    flex: 8; }
+    .header .header-center p {
+      color: white;
+      font-weight: bold;
+      font-size: 2rem; }
+
+.content {
+  background-color: #5fc0cd;
+  margin-top: 6rem;
+  justify-content: flex-start;
+  flex-wrap: wrap; }
+  .content .box {
+    flex-direction: column;
+    margin: 2% 5%;
+    height: 6rem; }
+    .content .box .boxtop {
+      flex: 8;
+      background-color: #fff1d3;
+      font-weight: bold;
+      font-size: 1.5rem;
+      width: 6rem; }
+    .content .box .boxbottom {
+      flex: 2;
+      background-color: #39a1c2;
+      font-size: 0.8rem;
+      color: white;
+      width: 6rem; }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  max-width: 640px;
+  min-width: 320px;
+  width: 100%;
+  padding: 1rem 0; }
+  .footer button {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0 2rem; }
+
+/*# sourceMappingURL=task2-5.css.map */

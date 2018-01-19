@@ -1,0 +1,27 @@
+html,body{
+	font-size: 62.5%;
+}
+body{
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+	max-width: 640px;
+	min-width: 320px;
+}
+div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+a{
+	margin: 0;
+	padding: 0;
+}
+
+img{
+	display: inline-block;
+}

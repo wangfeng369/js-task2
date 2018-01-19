@@ -1,0 +1,141 @@
+body{
+  background-color: #eff0f4;
+}
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  background-color: #5fc0cd;
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+  justify-content: flex-start;
+  z-index: 2; }
+.headerbutton{
+  position: relative;  
+  float: left;  
+        padding: 9px 10px;  
+        margin-top: 8px;  
+        margin-right: 15px;  
+        margin-bottom: 8px;  
+        background-color: transparent;  
+        background-image: none;  
+        border: 1px solid transparent;  
+        border-radius: 4px;  
+
+}
+.headerbutton .sr-only{
+   position: absolute;  
+        width: 1px;  
+        height: 1px;  
+        padding: 0;  
+        margin: -1px;  
+        overflow: hidden;  
+        clip: rect(0, 0, 0, 0);  
+        border: 0;   
+    }  
+.headerbutton .icon-bar {  
+        display: block;  
+        margin-top: 4px;  
+        width: 22px;  
+        height: 2px;  
+        background-color: white;  
+        border-radius: 1px;   
+    }  
+.container{
+  width: 80%;
+  margin: 0 auto;
+}
+.body-wrapper {
+  flex-direction: column;
+ }
+
+.nav {
+  background-color: white;
+  vertical-align: center;
+  margin-top: 75px;
+  border: 1px solid lightgrey;
+  font-size: 1.2rem;
+  position: relative;
+  padding: 1rem 0;
+  color: gray; }
+  .nav img {
+    float: right;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding-right: 1rem;
+    zoom:0.5; }
+
+@media (max-width: 380px) {
+  .nav img {
+    padding-right: 0.1rem; }
+
+  .nav {
+    font-size: 0.8rem; } }
+.content-wrapper {
+  background-color: white;
+  flex-direction: column;
+  margin-top: 1rem;
+  border: 1px solid lightgrey; }
+  .content-wrapper > div {
+    width: 100%; }
+
+.content-title {
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  color: orange;
+  border-bottom: 1px solid orange;
+  }
+
+.content-edition {
+  position: relative; }
+  .content-edition .edition-link {
+    width: 80%; }
+  .content-edition button {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 2rem 0;
+    color: white;
+    background-color: #5fc0cd; }
+
+@media (max-width: 450px) {
+  .content-edition .edition-link {
+    width: 70%; } }
+.content-edition-1 {
+  margin-top: 1rem; }
+
+.content-user {
+  font-size: 1rem;
+  padding: 1rem 0;
+  color: grey; }
+
+.content-triangle {
+  width: 0px;
+  height: 0px;
+  border: 1.5rem solid transparent;
+  border-left: 1.5rem solid #5fc0cd;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%); }
+
+.content-triangle-left {
+  width: 0px;
+  height: 0px;
+  border: 1.5rem solid transparent;
+  border-right: 1.5rem solid #5fc0cd;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%); }
+
+.content-circle {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: 0.5rem 1rem;
+  border-radius: 50%;
+  background-color: gray; }
+  .content-circle:first-child {
+    background-color: #5fc0cd; }

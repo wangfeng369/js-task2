@@ -1,0 +1,115 @@
+$head-color: #5fc0cd;;
+@mixin display{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@mixin head-button{
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	border: none;
+	background-color: transparent;
+	background-position: center;
+}
+@mixin contentbox{
+	display: flex;
+	padding: 10%;
+	background-color: #fff1d3;
+	border: 0.2rem solid white;
+	margin-top: 10rem;
+}
+body{
+	background-color: #5fc0cd;
+}
+.header{
+	background-color:$head-color;
+	width: 100%;
+	min-width: 320px;
+	max-width: 640px;
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	justify-content:flex-start;
+	height: 5rem;
+	border-bottom: 0.1rem solid white;
+	.button-left,{
+		@include display;
+		flex: 1;
+		height: 100%;
+		button{
+		@include head-button;
+		background-image: url(./images/back.png);
+		zoom:0.6;
+		}
+	}
+	.button-right{
+		@include display;
+		flex: 1;
+		height: 100%;
+		button{
+		@include head-button;
+		background-image: url(./images/close.png);
+		zoom:0.5;
+		}
+	}
+	.header-center{
+		display: flex;
+		flex: 8;
+		 p{
+		 	color: white;
+		 	font-weight: bold;
+		 	font-size: 2rem;
+		 }
+	}
+}
+.content{
+	background-color: $head-color;
+	margin-top: 6rem;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+		.box{
+			flex-direction: column;
+			margin:2% 5%;
+			height: 6rem;
+			.boxtop{
+				flex:8;
+				background-color: #fff1d3;
+		
+				font-weight: bold;
+				font-size: 1.5rem;
+				width: 6rem;
+
+			}
+			.boxbottom{
+				flex: 2;
+				background-color: #39a1c2;
+				font-size: 0.8rem;
+				color: white;
+				width: 6rem;
+		}
+
+}
+}
+
+.footer{
+	@include display;
+	position: fixed;
+	bottom: 0;
+	max-width: 640px;
+	min-width: 320px;
+	width: 100%;
+	padding: 1rem 0;
+	button{
+		border: none;
+		width: 100%;
+		height: 100%;
+		background-color: orange;
+		color: white;
+		font-weight: bold;
+		font-size: 2rem;
+		margin: 0 2rem;
+
+	}
+}

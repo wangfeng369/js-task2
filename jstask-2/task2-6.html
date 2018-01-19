@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>游戏选择</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/task2-6.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="header">
+	<div class="button-left">
+		<button></button>
+	</div>
+	<div class="header-center">
+		<p>法官台本</p>
+	</div>
+	<div class="button-right">
+		<button id="close"></button>
+	</div>
+</div>
+<div class="wraper">
+<div class="content" >
+	<div class="content-top">第<span class="date">一</span>天</div>
+	<div class="content-center">
+		<div class="toptriangle"></div>
+	</div>
+	<div class="content-bottom">
+		<div class="content-bottom-box">
+		<div class="content-bottom-kill">
+			<img src="images/moon.png">
+			<div class="lefttriangle"></div>
+			<div class="contain" id="kill">
+				<p>杀手杀人</p>
+		</div>
+	</div>
+		<div class="content-bottom-death">
+			<img src="images/sun.png">
+			<div class="lefttriangle"></div>
+			<div class="contain">
+				<p>亡灵发表遗言</p>
+		</div>
+	</div>
+		<div class="content-bottom-talk">
+			<div class="lefttriangle"></div>
+			<div class="contain">
+				<p>玩家依次发言</p>
+			</div>
+		</div>
+		<div class="content-bottom-vote">
+			<div class="lefttriangle"></div>
+			<div class="contain">
+				<p>玩家投票</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div class="footer">
+	<button>结束游戏</button>
+	<button>法官日志</button>
+</div>
+<script type="text/javascript">
+	var a=sessionStorage.getItem("number1");
+	var b=sessionStorage.getItem("number2");
+	var c=sessionStorage.getItem("number3");
+ 	var brr=JSON.parse(sessionStorage.getItem("list"));
+ 	console.log(brr);
+ 	var deadArr= JSON.parse(sessionStorage.getItem("deadlist"));
+ 	console.log("死掉的人",deadArr);
+ 	var steps=sessionStorage.getItem("step");
+ 	console.log("步骤",steps)
+
+ 	function fold(){
+ 		$(".content-top").click(function(){
+ 		$(this).nextAll().slideToggle();		
+ 	});
+ 	};
+ 	$(document).ready(function(){
+ 		$("#close").click(function(){
+ 			sessionStorage.clear();
+ 			$(location).attr("href","task2-3.html");
+ 		});
+ 	});
+
+ 	function judge(){
+ 		var steps = sessionStorage.getItem("step");
+ 		if(steps==null&&steps<1)
+ 			var steps =1;
+ 			sessionStorage.setItem("step",steps);
+ 			var steps = sessionStorage.getItem("step");
+ 			console.log(steps);
+ 	}
+
+ 	function kill(){
+ 		$(".content-bottom-kill").click(function(){
+ 			var steps = sessionStorage.getItem("step");
+ 			var steps = parseInt(steps);
+ 			console.log(steps);
+ 			var a = (steps-1)/4;
+ 			console.log(a);
+ 			var b = $(".content-bottom-kill").length;
+ 			console.log(b);
+ 			var f = $(this).index(".content-bottom-kill");
+ 			console.log(f);
+ 			if(a==b-1&&f==b-1){
+ 				var steps=parseInt(steps);
+				var steps=steps+1;
+				sessionStorage.setItem("step",steps);
+ 				$(location).attr("href","task2-7.html");
+ 			}
+ 			else{
+ 				alert("请按顺序进行游戏");
+ 			}
+
+ 		});
+ 	};
+ 	function deathtalk(){
+ 		$(".content-bottom-death").click(function(){
+ 		var steps = sessionStorage.getItem("step");
+ 			var steps = parseInt(steps);
+ 			console.log(steps);
+ 			var a = (steps-2)/4;
+ 			console.log(a);
+ 			var b = $(".content-bottom-death").length;
+ 			var f = $(this).index(".content-bottom-death");
+ 			console.log(f);
+ 			if(a==b-1&&f==b-1){
+ 				var steps=parseInt(steps);
+				var steps=steps+1;
+				sessionStorage.setItem("step",steps);
+ 				alert("死者请发言");
+ 				 
+ 			}
+ 			else{
+ 				alert("请按顺序进行游戏");
+ 			}
+
+ 		});
+ 	};	
+ 	function playertalk(){
+ 		$(".content-bottom-talk").click(function(){
+ 		var steps = sessionStorage.getItem("step");
+ 			var steps = parseInt(steps);
+ 			console.log(steps);
+ 			var a = (steps-3)/4;
+ 			console.log(a);
+ 			var b = $(".content-bottom-talk").length;
+ 			var f = $(this).index(".content-bottom-talk");
+ 			if(a==b-1&&f==b-1){
+ 				var steps=parseInt(steps);
+				var steps=steps+1;
+				sessionStorage.setItem("step",steps);
+ 				alert("玩家依次发言");
+ 				
+ 			}
+ 			else{
+ 				alert("请按顺序进行游戏");
+ 			}
+
+ 		});
+ 	};	
+ 	function vote(){
+ 		$(".content-bottom-vote").click(function(){
+ 		var steps = sessionStorage.getItem("step");
+ 			var steps = parseInt(steps);
+ 			console.log(steps);
+ 			var a = (steps-4)/4;
+ 			console.log(a);
+ 			var b = $(".content-bottom-vote").length;
+ 			var f = $(this).index(".content-bottom-vote");
+ 			if(a==b-1&&f==b-1){
+ 				var steps=parseInt(steps);
+				var steps=steps+1;
+				sessionStorage.setItem("step",steps);
+ 				$(location).attr("href","task2-7.html")
+ 				
+ 			}
+ 			else{
+ 				alert("请按顺序进行游戏");
+ 			}
+
+ 		});
+ 	};	
+ 	function clone(){
+ 		var steps = sessionStorage.getItem("step");
+		var steps = parseInt(steps);
+		console.log(steps);
+		if ((steps-1)%4>=0) {
+		var w=Math.ceil(steps/4)-1;
+		console.log(w);
+		for(var i=0;i<w;i++){
+		$(".wraper").append($(".content div:lt(3)").clone(true));
+};
+};
+}
+	function changedate(){
+		var arr = ["一","二","三","四","五","六","七","八"];
+		for(var i=0;i<8;i++){
+			$(".date").eq(i).text(arr[i]);
+			console.log(arr[i]);
+	};
+};
+	function add(){
+		
+	}
+
+
+
+
+
+ 	$(document).ready(function(){
+ 		judge();
+ 		fold();
+ 		kill();
+ 		deathtalk();
+ 		playertalk();
+ 		vote();
+ 		changedate();
+ 		clone();
+ 	});
+		
+</script>
+</body>
+</html>
+ 

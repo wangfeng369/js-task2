@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>游戏选择</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/task2-4.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="header">
+	<div class="button-left">
+		<button></button>
+	</div>
+	<div class="header-center">
+		<p>查看身份</p>
+	</div>
+	<div class="button-right">
+		<button></button>
+	</div>
+</div>
+<div class="content">
+	<div class="contentbox">
+		<div class="content-topcircle" id="circle">1</div>
+		<div class="content-inside" ><img src="images/fanpai.png" ></div>
+	</div>
+	<div class="contentrole">
+		<div class="role-circle" id="circle1">1</div>
+		<div class="role-inside"><img src="images/wow.png" ></div>
+		<div class="contenttext" id="role"></div>
+</div>
+</div>
+<div class="footer" >
+	<button id="next" ">查看1号身份</button>
+</div>
+<script type="text/javascript" >
+	var a=sessionStorage.getItem("number1");
+	var b=sessionStorage.getItem("number2");
+	var c=sessionStorage.getItem("number3");
+	
+	var arr=[];
+	for (var i=1;i<=a;i++){
+		arr.push(i);
+	}
+	console.log(arr);
+	var brr=[];
+	for(var i=1;i<=b;i++){
+		brr.push("杀手");
+	}
+	for(var i=1;i<=c;i++){
+		brr.push("平民");
+	}
+	console.log(brr);
+
+	function shuffle(arr){
+		var length= arr.length;
+		var temp =[];
+		while(0!=length){
+			var ran = Math.floor(Math.random()*length);
+			length--;
+			temp = arr[ran]
+			arr[ran] = arr[length]
+			arr[length] = temp;
+		}
+		console.log(arr);
+		return arr;
+
+	}
+
+	$(document).ready(function(){
+		var n =0;
+		var result = shuffle(brr);
+		console.log(result);
+		$("#next").click(function(){
+		n=n+1;
+		console.log(n);
+		var m=Math.floor(n/2);
+		console.log(m);
+		if(n<2*a-1){
+			if(n%2!==0){
+				$(".contentrole").show();
+				$(".contentbox").hide();
+				$("#circle1").text(arr[m]);
+				$("#next").text("隐藏并传递给"+arr[m+1]+"号");
+				$("#role").text(result[m]);
+			}
+			else{
+				$(".contentbox").show();
+				$(".contentrole").hide();
+				$("#circle").text(arr[m]);
+				$("#next").text("点击查看"+arr[m]+"号身份");
+						}
+					}
+			else{
+				$(".contentrole").show();
+				$(".contentbox").hide();
+				$("#role").text(result[m]);
+				$("#next").text("法官查看")
+				$("#circle1").text(arr[m]);
+
+			}
+			if(n>=2*a){
+				$(location).attr("href","task2-5.html");
+				sessionStorage.setItem("list",JSON.stringify(brr));
+
+						}
+		});
+	})
+	
+</script>
+</body>
+</html>

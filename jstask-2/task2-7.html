@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>游戏选择</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/task2-7.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="header">
+	<div class="button-left">
+	</div>
+	<div class="header-center">
+		<p>杀手杀人</p>
+	</div>
+	<div class="button-right">
+		<button></button>
+	</div>
+</div>
+<div class="wraper">
+<div class="nav">
+	<div class="nav-top">杀手请睁眼，杀手请选择要杀的对象</div>
+	<div class="nav-center">
+		<div class="nav-triangle"></div>
+	</div>
+	<div class="nav-bottom">点击下方的头像，进行标记</div>
+</div>
+<div class="content">
+	
+	</div>
+</div>
+<div class="footer">
+	<button id="next">确定</button>
+</div>
+<script type="text/javascript">
+	var a=sessionStorage.getItem("number1");
+	var b=sessionStorage.getItem("number2");
+	var c=sessionStorage.getItem("number3");
+ 	var brr=JSON.parse(sessionStorage.getItem("list"));
+ 	console.log(brr);
+ 	var deadArr= JSON.parse(sessionStorage.getItem("deadlist"));
+ 	console.log("死掉的人",deadArr);
+ 	var deadArr=JSON.parse(sessionStorage.getItem("deadlist"));
+	var c =parseInt(c);
+	console.log(a,b,c);
+
+	$(document).ready(function(){
+		for(var i=0;i<a;i++){
+			$(".content").append("<div>");
+			$(".content").children("div").addClass("box");
+		}
+		$(".box").append("<div></div>","<div></div>","<div></div>");
+		$(".box").children("div:first-child").addClass("boxtop");
+		$(".boxtop").next().addClass("boxbottom");
+		$(".box").children("div:last-child").addClass("boxhover");
+		$(".boxhover").append('<img src="images/kill.png">','<img src="images/kill.png">','<img src="images/kill.png">','<img src="images/kill.png">');
+	});
+	$(document).ready(function(){
+		var x = $(".boxtop");
+		var y = $(".boxbottom");
+		for(var i=0;i<a;i++){
+			$(x[i]).append(brr[i]);
+			$(y[i]).append([i+1]+"号");
+		}
+	});
+	$(document).ready(function(){
+		$("#close").click(function(){
+			sessionStorage.clear();
+			$(location).attr("href","task2-2.html");
+		});
+	});
+	$(document).ready(function(){
+		$(".box").bind("click", function(){
+		$(".box").find(".boxhover").css("display","none");
+		$(this).find(".boxhover").css("display","inline-flex");
+	});
+});
+	function judge(){
+		var steps = sessionStorage.getItem("step");
+		var steps = parseInt(steps);
+		var j = steps%2;
+		console.log(j);
+		if (j ==0) {
+			$(".header-center").find("p").text("杀手杀人");
+			return j;
+		}
+		else{
+			$(".header-center").find("p").text("玩家投票");
+			$(".nav-top").text("玩家发言结束，请投票");
+			$(".nav-bottom").text("点击得票人数最多的头像");
+			return j;
+		};
+	};
+	$(document).ready(function(){
+		changecolor();
+		judge();
+		var k = judge();
+		console.log(k);
+		if (k==0) {
+			$(".box").click(function(){
+				var l = $(this).index().toString(10);
+				console.log(l)
+				var h = $.inArray(l,deadArr);
+				console.log(l,deadArr,h);
+				if (h!==(-1)) {
+					sessionStorage.removeItem("deadperson");
+					alert("请选择活着的玩家");
+				}
+				else if (brr[l]=="杀手") {
+					sessionStorage.removeItem("deadPerson");
+					alert("请选择平民玩家")
+				}
+				else{
+					sessionStorage.setItem("deadperson",l);
+				}
+			})
+		
+		$("#next").click(function(){
+			nextkill();
+		})
+	}
+		else{
+			$(".box").click(function(){
+				var l = $(this).index().toString(10);
+				console.log(l);
+				var h = $.inArray(l,deadArr);
+				console.log(l,deadArr,h);
+				if(h!==(-1)){
+					sessionStorage.removeItem("deadperson");
+					alert("请选择活着的玩家");
+				}
+				else{
+					sessionStorage.setItem("deadperson",l);
+				}
+
+			})
+			$("#next").click(function(){
+				nextvote();
+			})
+		}
+	})
+	function nextkill(){
+		var g = sessionStorage.getItem("deadperson");
+			console.log(g);
+			if(g==null){
+				sessionStorage.removeItem("deadperson");
+				alert("请选择一位玩家");
+				return;
+			}
+			else{
+				var b = sessionStorage.getItem("number2");
+				var c = sessionStorage.getItem("number3");
+				var c = c - 1;
+				console.log(b,c);
+				if (b==c) {
+					deadArr.push(g);
+					sessionStorage.setItem("deadlist",JSON.stringify(deadArr));
+					sessionStorage.setItem("number3",c);
+					$(location).attr("href","task2-8.html");
+					return;
+				}
+				else{
+					deadArr.push(g);
+					sessionStorage.setItem("deadlist",JSON.stringify(deadArr));
+					sessionStorage.setItem("number3",c);
+					console.log(deadArr);
+					sessionStorage.removeItem("deadperson");
+					$(location).attr("href","task2-6.html");
+				}
+
+			}
+	};
+	function nextvote(){
+		var g =sessionStorage.getItem("deadperson");
+		console.log(g);
+		if (g==null) {
+			sessionStorage.removeItem("deadperson");
+				alert("请选择一位玩家");
+				return;
+		}
+		else{
+			var b = sessionStorage.getItem("number2");
+			var c = sessionStorage.getItem("number3");
+			console.log(b,c)
+			if (brr[g]=="平民") {
+				var c = c - 1
+			}
+			else{
+				var b = b - 1
+			}
+			console.log(b,c)
+			if(b==0||b==c){
+				deadArr.push(g)
+				sessionStorage.setItem("deadlist",JSON.stringify(deadArr));
+				sessionStorage.setItem("number3",c);
+				sessionStorage.setItem("number2",b);
+				$(location).attr("href","task2-8.html");
+			}
+			else{
+				deadArr.push(g)
+				sessionStorage.setItem("deadlist",JSON.stringify(deadArr));
+				sessionStorage.setItem("number3",c);
+				sessionStorage.setItem("number2",b);
+				$(location).attr("href","task2-6.html");
+				sessionStorage.removeItem("deadperson")
+			}
+		}
+	};
+	function changecolor(){
+		var deadArr = JSON.parse(sessionStorage.getItem("deadlist"));
+		console.log(deadArr);
+		if (deadArr!==null) {
+			for(var i=0;i<deadArr.length;i++){
+				var m = deadArr[i];
+				$(".box").eq(m).find("div").css("background-color","gray");
+			}
+			return;
+		}
+
+	}
+
+
+</script>
+</body>
+</html>
